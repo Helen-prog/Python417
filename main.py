@@ -2837,3 +2837,6 @@
 # lst = list(map(int, lst))
 # print(lst)
 # print(sum(lst))
+
+
+print("Вносим изменения в локальный репозиторий")
