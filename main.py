@@ -2832,8 +2832,8 @@
 # print(fio)
 # print(f"{fio[0]} {fio[1][0]}. {fio[2][0]}.")
 
-lst = input("Введите числа через пробел: ").split()
-print(lst)
-lst = list(map(int, lst))
-print(lst)
-print(sum(lst))
+# lst = input("Введите числа через пробел: ").split()
+# print(lst)
+# lst = list(map(int, lst))
+# print(lst)
+# print(sum(lst))
