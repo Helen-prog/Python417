@@ -98,5 +98,20 @@ git add -A
 		.
 - добавляем файлы в репозиторий отслежуемые git
 
+git config --global user.name
+- просмотр имени в системе
 
+git config --global user.name "new_user"
+		   --local
 	
+git config --global user.email
+
+git config --global user.email "test@mail.ru"
+
+
+git commit -m "first commit"
+
+
+.gitignore
+
+git commit -m "git ignore"
