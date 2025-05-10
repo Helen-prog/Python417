@@ -176,4 +176,17 @@ git clone https://github.com/Helen-prog/Python417.git
 git pull
 - забирает изменения с удаленного репозитория на локальный
 
+class NameClass:
+	свойства (переменные, поля)
+		- статические
+		- динамические
+	методы (функции)
+	
+	атрибуты = свойства + методы
+	
+	
+Модификаторы доступа:
+public  ->  self.x
+protected  -> self._x
+private  -> self.__x
 
