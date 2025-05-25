@@ -3274,7 +3274,6 @@ from os import write
 
 import os
 
-
 # dirs = [r"Work\F1", r"Work\F2\F21"]
 # for d in dirs:
 #     os.makedirs(d)
@@ -4672,33 +4671,313 @@ import os
 
 # Число секунд в одном днеЖ 24 * 60 * 60 = 86400
 
-class Clock:
-    __DAY = 86400
+# class Clock:
+#     __DAY = 86400
+#
+#     def __init__(self, sec: int):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec % self.__DAY
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f"{Clock.get_form(h)}:{Clock.get_form(m)}:{Clock.get_form(s)}"
+#
+#     @staticmethod
+#     def get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock(self.sec + other.sec)  # Clock(300)
+#
+#     def __eq__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return self.sec == other.sec
+#
+#     def __ne__(self, other):
+#         return not self.__eq__(other)
+#
+#     def __getitem__(self, item):
+#         if not isinstance(item, str):
+#             raise ValueError("Ключ должен быть строкой")
+#
+#         if item == "hour":
+#             return (self.sec // 3600) % 24
+#         if item == "min":
+#             return (self.sec // 60) % 60
+#         if item == "sec":
+#             return self.sec % 60
+#
+#         return "Неверный ключ"
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, str):
+#             raise ValueError("Ключ должен быть строкой")
+#         if not isinstance(value, int):
+#             raise ValueError("Значение должен быть целым числом")
+#
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#
+#         if key == "hour":
+#             self.sec = s + 60 * m + value * 3600
+#         if key == "min":
+#             self.sec = s + 60 * value + h * 3600
+#         if key == "sec":
+#             self.sec = value + 60 * m + h * 3600
+#
+#
+# c1 = Clock(80000)
+# print(c1.get_format_time())
+#
+# c1["hour"] = 14
+# c1["min"] = 20
+# c1["sec"] = 50
+# print(c1["hour"], c1["min"], c1["sec"])
 
-    def __init__(self, sec: int):
-        if not isinstance(sec, int):
-            raise ValueError("Секунды должны быть целым числом")
-        self.sec = sec % self.__DAY
+# c1 = Clock(100)
+# c2 = Clock(200)
+# c4 = Clock(300)
+# c3 = c1 + c2 + c4  # Clock(300) + c4
+# print(c1.get_format_time())
+# print(c2.get_format_time())
+# c1 += c2
+# print(c1.get_format_time())
+# print(c4.get_format_time())
+# print(c3.get_format_time())
+# if c1 == c2:
+#     print("Время одинаковое")
+# else:
+#     print("Время разное")
+# if c1 != c2:
+#     print("Время разное")
+# else:
+#     print("Время одинаковое")
 
-    def get_format_time(self):
-        s = self.sec % 60
-        m = (self.sec // 60) % 60
-        h = (self.sec // 3600) % 24
-        return f"{Clock.get_form(h)}:{Clock.get_form(m)}:{Clock.get_form(s)}"
 
-    @staticmethod
-    def get_form(x):
-        return str(x) if x > 9 else "0" + str(x)
+# class Student:
+#     def __init__(self, name, *marks):
+#         self.name = name
+#         self.marks = list(marks)  # [5, 5, 3, 4, 5]
+#
+#     def __getitem__(self, item):
+#         if 0 <= item < len(self.marks):
+#             return self.marks[item]
+#         else:
+#             raise IndexError("Неверный индекс")
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, int) or key < 0:
+#             raise TypeError("Индекс должен быть целым положительным числом")
+#
+#         if key >= len(self.marks):
+#             off = key + 1 - len(self.marks)  # 10 + 1 - 5 => 6
+#             self.marks.extend([None] * off)  # [5, 5, 3, 4, 5, None, None, None, None, None, None]
+#
+#         self.marks[key] = value  # [5, 5, 3, 4, 5, None, None, None, None, None, 4]
+#
+#     def __delitem__(self, key):
+#         if not isinstance(key, int):
+#             raise TypeError("Индекс должен быть целым числом")
+#
+#         del self.marks[key]
+#
+#     def append(self, item):
+#         self.marks.append(item)
+#
+#
+# s1 = Student("Сергей", 5, 5, 3, 4, 5)
+# # print(s1.marks[2])
+# print(s1[2])
+# s1[10] = 4
+# del s1[2]
+# s1.append(3)
 
-    def __add__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock(self.sec + other.sec)  # Clock(300)
+# print(s1.marks)
+
+# from random import choice, randint
+#
+#
+# class Cat:
+#     def __init__(self, name, age, pol):
+#         self.name = name
+#         self.age = age
+#         self.pol = pol
+#
+#     def __str__(self):
+#         if self.pol == "M":
+#             return f"{self.name} is good boy!!!"
+#         elif self.pol == "F":
+#             return f"{self.name} is good girl!!!"
+#         else:
+#             return f"{self.name} is good Kitty!!!"
+#
+#     def __repr__(self):
+#         return f"Cat(name='{self.name}', age={self.age}, pol='{self.pol}')"
+#
+#     def __add__(self, other):
+#         if self.pol != other.pol:
+#             return [Cat("Not name", 0, choice(["M", "F"])) for _ in range(1, randint(2, 6))]  # range(1, 1)
+#         else:
+#             raise TypeError("Types are not supported!")
+#
+#
+# cat1 = Cat("Tom", 4, "M")
+# cat2 = Cat("Elsa", 5, "F")
+# # cat3 = Cat("Murzik", 3, "M")
+# print(cat1)
+# print(cat2)
+# # print(cat3)
+# print(cat1 + cat2)
+
+# class Rectangle:
+#     def __init__(self, w, h):
+#         self.w = w
+#         self.h = h
+#
+#     def perimeter(self):
+#         return 2 * (self.w + self.h)
+#
+#
+# class Square:
+#     def __init__(self, a):
+#         self.a = a
+#
+#     def perimeter(self):
+#         return 4 * self.a
+#
+#
+# class Triangle:
+#     def __init__(self, a, b, c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def perimeter(self):
+#         return self.a + self.b + self.c
+#
+#
+# r1 = Rectangle(1, 2)
+# r2 = Rectangle(3, 4)
+#
+# s1 = Square(10)
+# s2 = Square(20)
+#
+# t1 = Triangle(1, 2, 3)
+# t2 = Triangle(4, 5, 6)
+#
+# shape = [r1, r2, s1, s2, t1, t2]
+#
+# for g in shape:
+#     print(g.perimeter())
+
+from abc import ABC, abstractmethod
+import math
 
 
-c1 = Clock(100)
-c2 = Clock(200)
-c3 = c1 + c2
-print(c1.get_format_time())
-print(c2.get_format_time())
-print(c3.get_format_time())
+class Shape(ABC):
+    def __init__(self, color):
+        self.color = color
+
+    @abstractmethod
+    def get_perimeter(self):
+        pass
+
+    @abstractmethod
+    def get_area(self):
+        pass
+
+    @abstractmethod
+    def draw(self):
+        pass
+
+    @abstractmethod
+    def info(self):
+        pass
+
+
+class Square(Shape):
+    def __init__(self, side, color):
+        super().__init__(color)
+        self.side = side
+
+    def get_perimeter(self):
+        return self.side * 4
+
+    def get_area(self):
+        return self.side * self.side
+
+    def draw(self):
+        return ("*  " * self.side + "\n") * self.side
+
+    def info(self):
+        print(f"=== Квадрат ===\nСторона: {self.side}\nЦвет: {self.color}\n"
+              f"Площадь: {self.get_area()}\nПериметр: {self.get_perimeter()}\n{self.draw()}\n")
+
+
+class Rectangle(Shape):
+    def __init__(self, length, width, color):
+        super().__init__(color)
+        self.length = length
+        self.width = width
+
+    def get_perimeter(self):
+        return (self.length + self.width) * 2
+
+    def get_area(self):
+        return self.length * self.width
+
+    def draw(self):
+        return ("*  " * self.width + "\n") * self.length
+
+    def info(self):
+        print(f"=== Прямоугольник ===\nДлина: {self.length}\nШирина: {self.width}\nЦвет: {self.color}\n"
+              f"Площадь: {self.get_area()}\nПериметр: {self.get_perimeter()}\n{self.draw()}\n")
+
+
+class Triangle(Shape):
+    def __init__(self, side_1, side_2, side_3, color):
+        super().__init__(color)
+        self.side_1 = side_1
+        self.side_2 = side_2
+        self.side_3 = side_3
+
+    def get_perimeter(self):
+        return self.side_1 + self.side_2 + self.side_3
+
+    def get_area(self):
+        p = self.get_perimeter() / 2
+        return round(math.sqrt(p * (p - self.side_1) * (p - self.side_2) * (p - self.side_3)), 2)
+
+    def draw(self):
+        rows = []  # []
+        for n in range(self.side_2):  # range(0, 6)  # 3
+            rows.append(" " * n + "*" * (self.side_1 - 2 * n))  # " " +
+        rows.reverse()
+        return "\n".join(rows)
+
+    def info(self):
+        print(f"=== Треугольник ===\nСторона 1: {self.side_1}\nСторона 2: {self.side_2}\n"
+              f"Сторона 3: {self.side_3}\nЦвет: {self.color}\n"
+              f"Площадь: {self.get_area()}\nПериметр: {self.get_perimeter()}\n{self.draw()}\n")
+
+
+# sq = Square(3, "red")
+# sq.info()
+
+# rect = Rectangle(3, 7, "green")
+# rect.info()
+
+# tr = Triangle(11, 6, 6, "yellow")
+# tr.info()
+
+figs = [Square(3, "red"), Rectangle(3, 7, "green"), Triangle(11, 6, 6, "yellow")]
+
+for g in figs:
+    g.info()
