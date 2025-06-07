@@ -4,7 +4,7 @@
 # print(age, type(age))
 # print(name + str(age))
 # from operator import index
-
+# import json
 # a = 4  # комментарий
 # b = 5
 # print("a =", a, id(a))
@@ -3272,7 +3272,7 @@ from os import write
 # print(os.path.isfile(r"nested1\nested2\nested3\text5.txt"))
 
 
-import os
+# import os
 
 # dirs = [r"Work\F1", r"Work\F2\F21"]
 # for d in dirs:
@@ -5317,7 +5317,7 @@ import os
 # if __name__ == '__main__':
 #     run()
 
-import pickle
+# import pickle
 
 
 # filename = "basket.txt"
@@ -5356,28 +5356,466 @@ import pickle
 # print(res)
 
 
-class Test2:
-    def __init__(self):
-        self.a = 35
-        self.b = "test"
-        self.c = lambda x: x * x
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = "test"
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a} {self.b} {self.c(2)}"
+#
+#     def __getstate__(self):
+#         attr = self.__dict__.copy()
+#         del attr['c']
+#         return attr
+#
+#     def __setstate__(self, state):
+#         self.__dict__ = state
+#         self.c = lambda x: x * x
+#
+#
+# item1 = Test2()
+# item2 = pickle.dumps(item1)
+# item3 = pickle.loads(item2)
+#
+# print(item3.__dict__)
+# print(item3)
 
-    def __str__(self):
-        return f"{self.a} {self.b} {self.c(2)}"
 
-    def __getstate__(self):
-        attr = self.__dict__.copy()
-        del attr['c']
-        return attr
+# import json
 
-    def __setstate__(self, state):
-        self.__dict__ = state
-        self.c = lambda x: x * x
+# data = {
+#     'name': 'Olga',
+#     'age': 35,
+#     20: None,
+#     True: 1,
+#     'hobbies': ('running', 'singing'),
+#     'children': [
+#         {
+#             'firstName': 'Alice',
+#             'age': 6
+#         }
+#     ],
+#     None: "Кортеж"
+# }
+#
+# with open("data_file.json", "w", encoding="utf-8") as f:
+#     json.dump(data, f, indent=4, ensure_ascii=False)
+#
+# with open("data_file.json", "r", encoding="utf-8") as f:
+#     data1 = json.load(f)
+#
+# print(data1)
+#
+# json_string = json.dumps(data, ensure_ascii=False)
+# print(json_string, type(json_string))
+#
+# res = json.loads(json_string)
+# print(res, type(res))
 
 
-item1 = Test2()
-item2 = pickle.dumps(item1)
-item3 = pickle.loads(item2)
+# import json
+# from random import choice
+#
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#
+#     letters = ['a', 'b', 'c', 'd', 'f', 'g', 'h', 'e', 'k', 'l', 'm', 'n']
+#     num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#
+#     while len(tel) != 10:
+#         tel += choice(num)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#     return person
+#
+#
+# def write_json(person_dict):  # {"name": ..., "tel": ...}
+#     try:
+#         data = json.load(open('persons.json'))  # [{"name": ..., "tel": ...}, {"name": ..., "tel": ...}]
+#     except FileNotFoundError:
+#         data = []
+#
+#     data.append(person_dict)  # [{"name": ..., "tel": ...}, {"name": ..., "tel": ...}, {"name": ..., "tel": ...}]
+#     with open('persons.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+#
+# for i in range(5):
+#     write_json(gen_person())
 
-print(item3.__dict__)
-print(item3)
+#
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __str__(self):
+#         # st = ''
+#         # for i in self.marks:
+#         #     st += str(i) + ", "
+#         # return f"Студент: {self.name}: {st[:-2]}"
+#         # st = ", ".join(map(str, self.marks))
+#         # return f"Студент: {self.name}: {st}"
+#         return f"Студент: {self.name}: {", ".join(map(str, self.marks))}"
+#
+#     def add_mark(self, mark):
+#         self.marks.append(mark)
+#
+#     def delete_mark(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_mark(self, index, new_mark):
+#         self.marks[index] = new_mark
+#
+#     def average_marks(self):
+#         return sum(self.marks) / len(self.marks)
+#
+#     def get_file_name(self):
+#         return self.name + ".json"
+#
+#     def dump_to_json(self):
+#         data = {"name": self.name, 'marks': self.marks}
+#         with open(self.get_file_name(), "w") as f:
+#             json.dump(data, f)
+#
+#     def load_from_file(self):
+#         with open(self.get_file_name(), "r") as f:
+#             print(json.load(f))
+#
+#
+# class Group:
+#     def __init__(self, students, group):
+#         self.students = students
+#         self.group = group
+#
+#     def __str__(self):
+#         # st = ""
+#         # for i in self.students:
+#         #     st += str(i) + "\n"
+#         st = "\n".join(map(str, self.students))
+#         return f"Группа: {self.group}\n{st}"
+#
+#     def add_student(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, index):
+#         return self.students.pop(index)
+#
+#     @staticmethod
+#     def change_group(gr1, gr2, index):
+#         # st = gr1.remove_student(index)
+#         # gr2.add_student(st)
+#         gr2.add_student(gr1.remove_student(index))
+#
+#     def get_file_name(self):
+#         return self.group.lower().replace(" ", "-") + ".json"
+#
+#     def dump_to_json(self):
+#         data = [{"name": student.name, 'marks': student.marks} for student in self.students]
+#         with open(self.get_file_name(), "w") as f:
+#             json.dump(data, f, indent=2)
+#
+#     def load_from_file(self):
+#         with open(self.get_file_name(), "r") as f:
+#             print(json.load(f))
+#
+#
+# st1 = Student("Bodnya", [5, 4, 3, 4, 5, 3])
+# st2 = Student("Nikolaenko", [2, 3, 5, 4, 2])
+# st3 = Student("Birukov", [3, 5, 3, 2, 5, 4])
+# # print(st1)
+# # print(st2)
+# sts1 = [st1, st2]
+# group1 = Group(sts1, "ГК Python")
+# # print(group1)
+# print()
+# group1.add_student(st3)
+# # print(group1)
+# print()
+# group1.remove_student(1)
+# print(group1)
+# print()
+# sts2 = [st2]
+# group2 = Group(sts2, "ГК Web")
+# print(group2)
+# Group.change_group(group1, group2, 0)
+# print()
+# print(group1)
+# print(group2)
+# group2.dump_to_json()
+# group2.load_from_file()
+# # st1.add_mark(5)
+# # print(st1)
+# # st1.delete_mark(2)
+# # print(st1)
+# # st1.edit_mark(4, 4)
+# # print(st1)
+# # print(st1.average_marks())
+# # st2.dump_to_json()
+# # st2.load_from_file()
+
+
+# import json
+#
+#
+# class CountryCapital:
+#     @staticmethod
+#     def load(file_name):
+#         try:
+#             data = json.load(open(file_name))
+#         except FileNotFoundError:
+#             data = {}
+#         finally:
+#             return data
+#
+#     @staticmethod
+#     def add_country(file_name):
+#         new_country = input("Введите название страны: ").lower()
+#         new_capital = input("Введите название столицы: ").lower()
+#
+#         # try:
+#         #     data = json.load(open(file_name))
+#         # except FileNotFoundError:
+#         #     data = {}
+#         data = CountryCapital.load(file_name)
+#
+#         data[new_country] = new_capital
+#
+#         with open(file_name, "w") as f:
+#             json.dump(data, f)
+#
+#     @staticmethod
+#     def load_from_file(file_name):
+#         with open(file_name) as f:
+#             print({k.capitalize(): v.capitalize() for k, v in json.load(f).items()})
+#
+#     @staticmethod
+#     def delete_country(file_name):
+#         del_country = input("Введите название страны: ").lower()
+#
+#         # try:
+#         #     data = json.load(open(file_name))
+#         # except FileNotFoundError:
+#         #     data = {}
+#         data = CountryCapital.load(file_name)
+#
+#         if del_country in data:
+#             del data[del_country]
+#
+#             with open(file_name, "w") as f:
+#                 json.dump(data, f)
+#         else:
+#             print("Такой страны в базе нет")
+#
+#     @staticmethod
+#     def search_data(file_name):
+#         county = input("Введите название страны: ").lower()
+#
+#         # try:
+#         #     data = json.load(open(file_name))
+#         # except FileNotFoundError:
+#         #     data = {}
+#         data = CountryCapital.load(file_name)
+#
+#         if county in data:
+#             print(f"Страна {county.capitalize()} столица {data[county].capitalize()} есть в словаре")
+#         else:
+#             print(f"Страны {county.capitalize()} нет в словаре")
+#
+#     @staticmethod
+#     def edit_data(file_name):
+#         country = input("Введите страну для корректировки: ").lower()
+#         new_capital = input("Введите новое название столицы: ").lower()
+#
+#         # try:
+#         #     data = json.load(open(file_name))
+#         # except FileNotFoundError:
+#         #     data = {}
+#         data = CountryCapital.load(file_name)
+#
+#         if country in data:
+#             data[country] = new_capital
+#             with open(file_name, 'w') as f:
+#                 json.dump(data, f)
+#         else:
+#             print("Такой страны в базе нет")
+#
+#
+# file = "list_capital.json"
+# while True:
+#     index = input("Выбор действия:\n1 - добавление данных\n2 - удаление данных\n3 - поиск данных\n"
+#                   "4 - редактирование данных\n5 - просмотр данных\n6 - завершение работы\nВвод: ")
+#     if index == "1":
+#         CountryCapital.add_country(file)
+#     elif index == "2":
+#         CountryCapital.delete_country(file)
+#     elif index == "3":
+#         CountryCapital.search_data(file)
+#     elif index == "4":
+#         CountryCapital.edit_data(file)
+#     elif index == "5":
+#         CountryCapital.load_from_file(file)
+#     elif index == "6":
+#         break
+#     else:
+#         print("Введен некорректный номер")
+
+# import requests
+# import json
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# todos = json.loads(response.text)
+#
+# todos_by_user = {}   # {1: 11, 2: 2}
+#
+# for todo in todos:
+#     if todo['completed']:
+#         try:
+#             todos_by_user[todo["userId"]] += 1
+#         except KeyError:
+#             todos_by_user[todo["userId"]] = 1
+#
+# print(todos_by_user)
+#
+# top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
+# print(top_users)  # [(5, 12), (10, 12), (1, 11), (8, 11), (7, 9), (2, 8), (9, 8), (3, 7), (4, 6), (6, 6)]
+#
+# max_complete = top_users[0][1]
+# print(max_complete)  # 12
+#
+# users = []  # [5, 10]
+# for user, num_complete in top_users:
+#     if num_complete < max_complete:  # 11 < 12
+#         break
+#     users.append(str(user))
+#
+# print(users)  # ['5', '10']
+#
+# max_users = " and ".join(users)
+# print(max_users)
+#
+# print(f"Users {max_users} completed {max_complete} TOSOs")
+#
+#
+# def keep(todo1):
+#     is_complete = todo1["completed"]
+#     has_max_count = str(todo1["userId"]) in users
+#     return is_complete and has_max_count
+#
+#
+# with open("filtered_data.json", "w") as f:
+#     filtered_todos = list(filter(keep, todos))
+#     json.dump(filtered_todos, f, indent=2)
+#
+# with open("filtered_data.json", "r") as f:
+#     print(json.load(f))
+
+
+import csv
+
+# with open("data.csv") as f:
+#     file_reader = csv.reader(f, delimiter=",")
+#     count = 0
+#     for row in file_reader:
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         else:
+#             print(f"\t{row[0]} - {row[1]}. Родился в {row[2]} году.")
+#         count += 1
+#
+#     print(f"Всего в файле {count} строки.")
+
+
+# with open("data.csv") as f:
+#     file_names = ['Имя', 'Профессия', 'Год рождения']
+#     file_reader = csv.DictReader(f, delimiter=",", fieldnames=file_names)
+#     count = 0
+#     for row in file_reader:
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         print(f"\t{row['Имя']} - {row['Профессия']}. Родился в {row['Год рождения']} году.")
+#         count += 1
+
+
+# with open("student.csv", "w") as f:
+#     writer = csv.writer(f, delimiter=",", lineterminator="\r")
+#     writer.writerow(["Имя", "Класс", "Возраст"])
+#     writer.writerow(["Женя", 9, 15])
+#     writer.writerow(["Саша", 5, 12])
+#     writer.writerow(["Маша", 11, 17])
+
+
+# data = [['hostname', 'vendor', 'model', 'location'],
+#         ['sw1', 'Cisco', '3750', 'London, Best str'],
+#         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+#         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+#         ['sw4', 'Cisco', '3650', 'London, Best str']]
+#
+#
+# with open("sw_data.csv", "w") as f:
+#     writer = csv.writer(f, delimiter=",", lineterminator="\r")
+#     # for row in data:
+#     #     writer.writerow(row)
+#     writer.writerows(data)
+
+#
+# with open("student1.csv", "w") as f:
+#     names = ["Имя", "Возраст"]
+#     writer = csv.DictWriter(f, delimiter=",", lineterminator="\r", fieldnames=names)
+#     writer.writeheader()
+#     writer.writerow({"Имя": "Саша", "Возраст": 6})
+#     writer.writerow({"Имя": "Маша", "Возраст": 15})
+#     writer.writerow({"Имя": "Вова", "Возраст": 14})
+
+
+# data = [{
+#     'hostname': 'sw1',
+#     'location': 'London',
+#     'model': '3750',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw2',
+#     'location': 'Liverpool',
+#     'model': '3850',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw3',
+#     'location': 'Liverpool',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw4',
+#     'location': 'London',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }]
+#
+# with open('dict_writer.csv', 'w') as f:
+#     writer = csv.DictWriter(f, delimiter=",", lineterminator="\r", fieldnames=data[0].keys())
+#     writer.writeheader()
+#     for d in data:
+#         writer.writerow(d)
+
+# Парсинг данных с сайтов
+
+from bs4 import BeautifulSoup
+
+f = open("index.html").read()
+soup = BeautifulSoup(f, "html.parser")
+# row = soup.find("div", class_="name").text
+# row = soup.find_all("div", class_="name")
+# row = soup.find_all("div", class_="row")[2].find("div", {"class": "name"})
+row = soup.find_all("div", {"data-set": "salary"})
+print(row)
+
+
