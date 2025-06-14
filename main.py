@@ -5721,7 +5721,7 @@ from os import write
 #     print(json.load(f))
 
 
-import csv
+# import csv
 
 # with open("data.csv") as f:
 #     file_reader = csv.reader(f, delimiter=",")
@@ -5971,13 +5971,30 @@ import csv
 #     main()
 
 
-from parser import Parser
+# from parser import Parser
+#
+#
+# def main():
+#     pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
+#     pars.run()
+#
+#
+# if __name__ == "__main__":
+#     main()
+
+import socket
 
 
-def main():
-    pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
-    pars.run()
+def run():
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind(('127.0.0.1', 5000))  # 127.0.0.1:5000
+    server_socket.listen()
+
+    while True:
+        client_socket, addr = server_socket.accept()
+        request = client_socket.recv(1024)
+        print(f"Клиент {addr} => \n{request}\n")
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    run()

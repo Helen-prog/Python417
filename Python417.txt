@@ -248,3 +248,20 @@ csv.DictWriter  => {}
 
 pip install beautifulsoup4 или bs4
 
+lxml
+
+https://ru.wordpress.org/plugins/browse/blocks/page/1/
+https://ru.wordpress.org/plugins/browse/blocks/page/2/
+https://ru.wordpress.org/plugins/browse/blocks/page/3/
+
+https://ru.wordpress.org/plugins/browse/blocks/page/22/
+
+parser.py
+
+Компоненты MVC:
+• Модель (Model) — этот компонент отвечает за данные, а также 
+определяет структуру приложения. 
+• Представление (View) — этот компонент отвечает за 
+взаимодействие с пользователем. То есть код компонента 
+view определяет внешний вид приложения.
+• Контроллер (Controller) — этот компонент отвечает за связь между model и view. По сути, это мозг MVC-приложения.
