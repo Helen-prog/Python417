@@ -366,7 +366,7 @@ MAX
 
 ON DELETE или ON UPDATE
 - CASCADE - автоматически удаляются или изменяются
-	стрки в зависимой таблице
+	строки в зависимой таблице
 - SET NULL - установится NULL
 - RESTRICT - запрет на удаление записи из главной
 	таблицы, пока есть связанные записи
@@ -374,12 +374,34 @@ ON DELETE или ON UPDATE
 	умолчанию
 
 
-	
+CREATE TABLE IF NOT EXISTS association(
+     group_id INTEGER,
+     lesson_id INTEGER,
+     PRIMARY KEY (group_id, lesson_id)
+     FOREIGN KEY (group_id) REFERENCES groups(id)
+     FOREIGN KEY (lesson_id) REFERENCES lessons(id)	
 		
 		
+Подзапросы
+
+- однострочные (>, <, >=, <=, =, <>, !=)
+- многострочные (IN, NOT IN)
+
 	
+EXISTS (существует)	
 	
-	
-	
+UNION, UNION ALL
+
+SELECT список_столбцов
+FROM таблица1 [INNER] JOIN таблица2 ON связь_таблиц
+     [INNER] JOIN таблица3 ON связь_таблиц
+	 
+	 
+SELECT c.cname, o.onum
+FROM Customers c INNER JOIN Orders o
+ON c.snum=o.snum
+ORDER BY c.cname
+
+
 
 

@@ -6180,3 +6180,18 @@ with sqlite3.connect("education.db") as con:
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        group_name TEXT NOT NULL)
        """)
+
+    cur.execute("""
+     CREATE TABLE IF NOT EXISTS lessons(
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     lesson_title TEXT NOT NULL
+     )""")
+
+    cur.execute("""
+     CREATE TABLE IF NOT EXISTS association(
+     group_id INTEGER,
+     lesson_id INTEGER,
+     PRIMARY KEY (group_id, lesson_id)
+     FOREIGN KEY (group_id) REFERENCES groups(id)
+     FOREIGN KEY (lesson_id) REFERENCES lessons(id)
+     )""")
