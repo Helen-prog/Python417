@@ -402,6 +402,21 @@ FROM Customers c INNER JOIN Orders o
 ON c.snum=o.snum
 ORDER BY c.cname
 
+ORM (Object-Relation Mapping)
+
+SQLAlchemy
+
+pip install sqlalchemy
+
+models
+	__init__.py
+	database.py
+	student.py
+	group.py
+	lesson.py
+
+
+
 
 
 
