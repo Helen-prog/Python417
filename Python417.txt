@@ -417,6 +417,37 @@ models
 
 
 
+pip install jinja2
 
+# макроопределение (аналог функции)
+{% macro имя(агументы) %}
 
+{% endmacro %}
+
+имя(параметры)
+
+templates	
+	home.html
+	header.html
+	footer.html
+	dialog.html
+	
+	page.html
+	about.html
+	
+pip install faker
+
+Flask
+Django
+
+pip install Flask
+
+http://127.0.0.1:5000/
+
+templates
+	index.html
+	about.html
+	
+	
+	
 
