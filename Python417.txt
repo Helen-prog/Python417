@@ -444,10 +444,35 @@ pip install Flask
 
 http://127.0.0.1:5000/
 
+static
+	css
+		style.css
 templates
 	index.html
 	about.html
-	
+	base.html
 	
 	
 
+http://127.0.0.1:5000/profile/1	
+http://127.0.0.1:5000/profile/2	
+
+int - должны присутствовать только цифры
+float - можно записать число с плавающей точкой
+path - можно использовать любые допустимые символу URL плюс символ "/"
+	
+	
+
+flash()
+
+get_flashed_messages()
+
+import os
+os.urandom(20).hex()
+
+from two.site_db import create_db
+create_db()
+
+http://127.0.0.1:5000/post/1
+
+pip install flask-sqlalchemy
