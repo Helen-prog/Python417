@@ -476,3 +476,26 @@ create_db()
 http://127.0.0.1:5000/post/1
 
 pip install flask-sqlalchemy
+
+
+pip install django
+
+first
+cd first
+
+django-admin startproject password_generator_project
+- создать новый проект
+
+cd password_generator_project
+
+python manage.py runserver
+- запустить сервер
+
+Ctrl + C
+- остановить сервер
+
+python manage.py startapp generator
+- создание нового приложения
+
+http://127.0.0.1:8000/
+http://127.0.0.1:8000/password/?length=2
