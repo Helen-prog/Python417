@@ -499,3 +499,57 @@ python manage.py startapp generator
 
 http://127.0.0.1:8000/
 http://127.0.0.1:8000/password/?length=2
+http://127.0.0.1:8000/password/?length=12&numbers=on
+
+cd first
+cd password_generator_project
+python manage.py runserver
+
+cd first/password_generator_project
+python manage.py runserver
+
+python manage.py collectstatic
+
+cd ../..
+
+second
+cd second
+django-admin startproject personal_portfolio
+
+
+cd personal_portfolio
+
+python manage.py startapp skills
+python manage.py startapp blog
+
+pip install Pillow
+
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py createsuperuser
+- создать суперпользователя
+
+http://127.0.0.1:8000/admin
+
+http://127.0.0.1:8000/blog
+
+
+cd ../..
+
+third
+cd third
+django-admin startproject todos
+cd todos
+python manage.py startapp todo
+
+
+python manage.py migrate
+
+python manage.py createsuperuser
+
+http://127.0.0.1:8000/signup/
+http://127.0.0.1:8000/current/
+
+46CcpEp4TgjAc4aMTBIwGZd16FDqa0msyZPf8SBzjtWToN7qcNofYS31OBgI3Zvg
+oikTeYd3uaDRqyvw0zpijeJEGRbD5mDYSbxWXcpyUngaChsajL51B7zEoNOVYlMM
