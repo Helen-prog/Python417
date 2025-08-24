@@ -571,3 +571,38 @@ models.CASCADE - если пользователь будет удален, то
 models.PROTECT - запрещает удалять пользователя, пока у него есть задачи
 models.SET_NULL - задачи останутся в БД, даже при удалении пользователя, но значение в поле задачи изменится на NULL
 models.SET_DEFAULT - задачи останутся в БД, даже при удалении пользователя, но значение в поле задачи изменится на значение по умолчанию
+
+ForeignKey - для связи один ко многим
+ManyToManyField - для связи многие ко многим
+OneToOneField - для связи один к одному
+
+
+
+fouth
+cd fouth
+django-admin startproject devsearch
+
+cd devsearch
+python manage.py startapp projects
+python manage.py startapp users
+
+
+python manage.py shell
+
+from projects.models import Project
+
+Project.objects.all()
+Project.objects.get(id=1)
+Project.objects.filter(id=1)
+Project.objects.filter(title__startswith="Website")
+Project.objects.filter(title__contains="website")
+Project.objects.filter(vote_total__gt=37)
+Project.objects.filter(vote_total__gte=37)
+Project.objects.exclude(vote_total__gte=37)
+
+quit()
+
+
+https://www.freelancer.com/portfolio-items/315324-website-for-picture-print-shop
+
+forms.py
