@@ -29,3 +29,4 @@ class Skill(models.Model):
         return self.name
 
 
+
