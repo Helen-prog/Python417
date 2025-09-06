@@ -1,5 +1,26 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Profile, Skill
+from django.forms import ModelForm
+
+
+class SkillForm(ModelForm):
+    class Meta:
+        model = Skill
+        fields = '__all__'
+        exclude = ['owner']
+
+
+class ProfileForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for field in self.fields.values():
+            field.widget.attrs.update({'class': 'input'})
+
+    class Meta:
+        model = Profile
+        fields = ['name', 'email', 'username', 'short_intro', 'bio', 'profile_image', 'social_github', 'social_youtube', 'social_website']
 
 
 class CustomUserCreationForm(UserCreationForm):

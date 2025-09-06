@@ -146,7 +146,7 @@ git merge readme
 
 git branch -D readme
 
-git login
+git log
 - история коммитов
 
 токен
