@@ -1,16 +1,16 @@
 let searchForm = document.getElementById("search");
-    let pageLinks = document.querySelectorAll(".page-link");
+let pageLinks = document.querySelectorAll(".page-link");
 
-    if(searchForm){
-        for(let i=0; pageLinks.length > i; i++){
-            pageLinks[i].addEventListener("click", function (event){
-                event.preventDefault();
+if(searchForm){
+    for(let i=0; pageLinks.length > i; i++){
+        pageLinks[i].addEventListener("click", function (event){
+            event.preventDefault();
 
-                let page = this.dataset.page;
+            let page = this.dataset.page;
 
-                searchForm.innerHTML += `<input type='hidden' name='page' value='${page}'>`;
+            searchForm.innerHTML += `<input type='hidden' name='page' value='${page}'>`;
 
-                searchForm.submit();
-            })
-        }
+            searchForm.submit();
+        })
     }
+}
