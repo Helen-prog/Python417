@@ -1,8 +1,16 @@
 from django import forms
+from captcha.fields import CaptchaField
 from .models import *
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(label="Имя", max_length=255)
+    email = forms.EmailField(label="Email")
+    content = forms.CharField(label='Сообщение', widget=forms.Textarea(attrs={'rows': 20}))
+    captcha = CaptchaField()
 
 
 class RegisterUserForm(UserCreationForm):
@@ -17,6 +25,7 @@ class RegisterUserForm(UserCreationForm):
 
 
 class AddPostForm(forms.ModelForm):
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['cat'].empty_label = "Категория не выбрана"

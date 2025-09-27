@@ -6339,6 +6339,8 @@ import sqlite3
 
 import os
 
+from django.utils.lorem_ipsum import words
+
 from models.database import DATABASE_NAME, Session
 import create_database as db_creator
 
