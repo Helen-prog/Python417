@@ -657,4 +657,12 @@ Mixins
 
 utils.py
 
+python manage.py collectstatic
+
+
+git clone https://github.com/Helen-prog/blog.git
+
+ls
+- просмотр каталога
+
 
