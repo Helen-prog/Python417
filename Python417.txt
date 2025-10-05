@@ -693,6 +693,8 @@ https://helenkozovyakina.pythonanywhere.com/
 django-admin startproject landing_page
 
 python manage.py startapp cms
+python manage.py startapp price
+python manage.py startapp crm
 
 
 cms
@@ -700,3 +702,18 @@ cms
 	carusel.html
 	index.html
 	
+@BotFather
+
+Название:
+Бот обработчик заявок с сайта
+
+NikName(id)
+ttest_Bot_Send_Message_Bot
+
+token:
+8422458304:AAEmqtKQoAbCR_KEKO-qUOb66IMYBTx1dLc
+
+https://api.telegram.org/bot8422458304:AAEmqtKQoAbCR_KEKO-qUOb66IMYBTx1dLc/sendMessage?chat_id=          &text=Тест
+
+Группа:
+Заявки с сайта
