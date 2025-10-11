@@ -695,6 +695,7 @@ django-admin startproject landing_page
 python manage.py startapp cms
 python manage.py startapp price
 python manage.py startapp crm
+python manage.py startapp telebot
 
 
 cms
@@ -713,7 +714,19 @@ ttest_Bot_Send_Message_Bot
 token:
 8422458304:AAEmqtKQoAbCR_KEKO-qUOb66IMYBTx1dLc
 
-https://api.telegram.org/bot8422458304:AAEmqtKQoAbCR_KEKO-qUOb66IMYBTx1dLc/sendMessage?chat_id=          &text=Тест
+Your group Chat ID :
+-4989348357
+
+https://api.telegram.org/bot8422458304:AAEmqtKQoAbCR_KEKO-qUOb66IMYBTx1dLc/sendMessage?chat_id=-4989348357&text=Тест
 
 Группа:
 Заявки с сайта
+
+@get_id_bot
+
+/my_id@get_id_bot
+
+
+django-admin startproject shop
+
+python manage.py startapp products
