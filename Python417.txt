@@ -730,3 +730,8 @@ https://api.telegram.org/bot8422458304:AAEmqtKQoAbCR_KEKO-qUOb66IMYBTx1dLc/sendM
 django-admin startproject shop
 
 python manage.py startapp products
+
+change_list.html
+
+csv_uploader.html
+
