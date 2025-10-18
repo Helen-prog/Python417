@@ -6197,7 +6197,7 @@
 #      )""")
 
 
-import sqlite3
+# import sqlite3
 
 # cars_list = [
 #     ('BMW', 54000),
@@ -6337,19 +6337,18 @@ import sqlite3
 
 #  =================================================
 
-import os
-
-from django.utils.lorem_ipsum import words
-
-from models.database import DATABASE_NAME, Session
-import create_database as db_creator
-
-from models.lesson import Lesson, association_table
-from models.student import Student
-from models.group import Group
-
-from sqlalchemy import and_, or_, not_, desc, func, distinct
-
+# import os
+#
+# from django.utils.lorem_ipsum import words
+#
+# from models.database import DATABASE_NAME, Session
+# import create_database as db_creator
+#
+# from models.lesson import Lesson, association_table
+# from models.student import Student
+# from models.group import Group
+#
+# from sqlalchemy import and_, or_, not_, desc, func, distinct
 
 # if __name__ == '__main__':
 #     db_is_creator = os.path.exists(DATABASE_NAME)
@@ -6387,9 +6386,8 @@ from sqlalchemy import and_, or_, not_, desc, func, distinct
 #         print(it)
 #     print("*" * 60)
 #
-#     for it, gr in session.query(Lesson.lesson_title, Group.group_name).filter(association_table.c.lesson_id == Lesson.id, association_table.c.group_id == Group.id, Group.group_name == 'MDA-9'):
-#         print(it, gr)
-#     print("*" * 60)
+# for it, gr in session.query(Lesson.lesson_title, Group.group_name).filter(association_table.c.lesson_id ==
+# Lesson.id, association_table.c.group_id == Group.id, Group.group_name == 'MDA-9'): print(it, gr) print("*" * 60)
 #
 #     for it in session.query(Lesson).filter(not_(Lesson.id >= 3), not_(Lesson.lesson_title.like('М%'))):
 #         print(it)
@@ -6630,4 +6628,95 @@ from sqlalchemy import and_, or_, not_, desc, func, distinct
 #
 # print(msg)
 
+# ============================================================
 
+# board = [" "] * 9
+# player = "X"
+# game_over = False
+#
+#
+# def show():
+#     print(f"{board[0]} | {board[1]} | {board[2]}")
+#     print("- + - + -")
+#     print(f"{board[3]} | {board[4]} | {board[5]}")
+#     print("- + - + -")
+#     print(f"{board[6]} | {board[7]} | {board[8]}")
+#
+#
+# def check(p):
+#     wins = [
+#         (0, 1, 2), (3, 4, 5), (6, 7, 8),
+#         (0, 3, 6), (1, 4, 7), (2, 5, 8),
+#         (0, 4, 8), (2, 4, 6)
+#     ]
+#     return any(board[a] == board[b] == board[c] == p for a, b, c in wins)
+#
+#
+# while not game_over:
+#     show()
+#     move = int(input(f"Ход {player} (1-9): ")) - 1
+#
+#     if board[move] != " ":
+#         print("Занято")
+#         continue
+#     board[move] = player
+#
+#     if check(player):
+#         show()
+#         print(f"Пользователь {player} победил")
+#         game_over = True
+#         break
+#     if " " not in board:
+#         game_over = True
+#     player = "O" if player == "X" else "X"
+# else:
+#     show()
+#     print("Ничья")
+
+
+# ============================================================
+
+board = [" "] * 9
+player = "X"
+game_over = False
+
+
+def show():
+    print(f"{board[0]} | {board[1]} | {board[2]}")
+    print("- + - + -")
+    print(f"{board[3]} | {board[4]} | {board[5]}")
+    print("- + - + -")
+    print(f"{board[6]} | {board[7]} | {board[8]}")
+
+
+def check():
+    return ((board[0] == board[1] == board[2] == player) or
+            (board[3] == board[4] == board[5] == player) or
+            (board[6] == board[7] == board[8] == player) or
+            (board[0] == board[3] == board[6] == player) or
+            (board[1] == board[4] == board[7] == player) or
+            (board[2] == board[5] == board[8] == player) or
+            (board[0] == board[4] == board[8] == player) or
+            (board[2] == board[4] == board[6] == player))
+
+
+while not game_over:
+    show()
+    move = int(input(f"\nХод {player} (1-9): ")) - 1
+
+    if board[move] == " ":
+        board[move] = player
+    else:
+        print("Занято")
+        continue
+
+    if check():
+        show()
+        print(f"\nПользователь {player} победил")
+        game_over = True
+    elif " " not in board:
+        show()
+        print("\nНичья")
+        game_over = True
+
+    player = "O" if player == "X" else "X"

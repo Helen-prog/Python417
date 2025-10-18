@@ -730,6 +730,7 @@ https://api.telegram.org/bot8422458304:AAEmqtKQoAbCR_KEKO-qUOb66IMYBTx1dLc/sendM
 django-admin startproject shop
 
 python manage.py startapp products
+python manage.py startapp users
 
 change_list.html
 
