@@ -18,11 +18,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('products.urls')),
     path('users/', include('users.urls')),
+
+    path('reset-password/', auth_views.PasswordResetView.as_view(template_name="users/reset_password.html"), name="reset_password"),
+    # пользователь отправляет электронное письмо для сброса
+    path('reset_password_send/', auth_views.PasswordResetDoneView.as_view(template_name="users/reset_password_send.html"), name="password_reset_done"),
+    # Сообщение, отправленное по электронной почте
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="users/reset.html"), name="password_reset_confirm"),
+    # Электронное письмо со ссылкой и инструкциями по сбросу
+    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='users/reset_password_complete.html'), name="password_reset_complete"),
+    # Сообщение об успешном сбросе пароля
 ]
 
 if settings.DEBUG:

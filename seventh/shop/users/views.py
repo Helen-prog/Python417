@@ -7,6 +7,8 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from .models import EmailVerification, User
+from products.models import Basket
+from django.contrib.auth.decorators import login_required
 
 
 def login(request):
@@ -58,17 +60,27 @@ def register(request):
     return render(request, 'users/register.html', content)
 
 
+@login_required(login_url='/users/login/')
 def profile(request):
+    user = request.user
     if request.method == "POST":
-        form = UserProfileForm(data=request.POST, files=request.FILES, instance=request.user)
+        form = UserProfileForm(data=request.POST, files=request.FILES, instance=user)
         if form.is_valid():
             form.save()
             return redirect('profile')
     else:
-        form = UserProfileForm(instance=request.user)
+        form = UserProfileForm(instance=user)
+
+    baskets = Basket.objects.filter(user=user)
+    total_quantity = sum(basket.quantity for basket in baskets)  # [7, 3, 2] = 12
+    total_sum = sum(basket.sum() for basket in baskets)
+
     context = {
         'title': 'Store - Профиль',
-        'form': form
+        'form': form,
+        'baskets': Basket.objects.filter(user=user),
+        'total_quantity': total_quantity,
+        'total_sum': total_sum
     }
     return render(request, 'users/profile.html', context)
 
