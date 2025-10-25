@@ -60,7 +60,7 @@ def register(request):
     return render(request, 'users/register.html', content)
 
 
-@login_required(login_url='/users/login/')
+@login_required
 def profile(request):
     user = request.user
     if request.method == "POST":

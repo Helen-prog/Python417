@@ -742,3 +742,46 @@ store_site_shop
 ahmu nbkh mcbq iedm
 
 
+reset_password.html
+reset_password_send.html
+reset.html
+reset_password_complete.html
+
+http://127.0.0.1:8000/users/profile/
+
+
+SQL Shell (psql) 
+
+\! chcp 1251
+- установили кодировку поддержки русского языка
+
+\l
+- список баз данных
+
+store_shop_db 
+- имя БД
+store_user_1
+- имя пользователя
+store_shop
+- пороль для БД
+
+
+CREATE DATABASE store_shop_db;
+- создать базу данных
+
+DROP DATABASE store_shop_db;
+- удалить базу данных
+
+\c store_shop_db
+
+CREATE ROLE store_user with password 'store_shop';
+CREATE ROLE store_user_1 with password 'store_shop';
+ALTER ROLE "store_user_1" WITH LOGIN;
+GRANT ALL PRIVILEGES ON DATABASE "store_shop_db" to store_user_1;
+ALTER USER store_user_1 CREATEDB;
+
+grant usage on schema public to public;
+grant create on schema public to public;
+
+
+pip install psycopg2

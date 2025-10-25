@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import ProductCategory, Product, Basket
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -40,6 +41,7 @@ def product(request, pk):
     return render(request, 'products/product.html', context)
 
 
+@login_required
 def basket_add(request, product_id):
     current_page = request.META.get("HTTP_REFERER")
     product = Product.objects.get(id=product_id)
