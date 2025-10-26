@@ -1,5 +1,6 @@
 {% extends 'products/base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block css %}
     <!-- Custom styles for this template -->
@@ -64,7 +65,7 @@
                             <h4 class="card-title">
                                 <a href="{% url 'product' product.id %}">{{ product.name }}</a>
                             </h4>
-                            <h5>{{ product.price }} руб.</h5>
+                            <h5>{{ product.price|intcomma }} руб.</h5>
                             <p class="card-text">{{ product.short_description }}</p>
                         </div>
                         <div class="card-footer text-center">

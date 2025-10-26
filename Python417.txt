@@ -731,6 +731,7 @@ django-admin startproject shop
 
 python manage.py startapp products
 python manage.py startapp users
+python manage.py startapp orders
 
 change_list.html
 
