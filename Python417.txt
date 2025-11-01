@@ -786,3 +786,14 @@ grant create on schema public to public;
 
 
 pip install psycopg2
+
+node -v
+
+npx create-react-app .
+- установка проекта
+
+npm start
+- запуск сервера
+
+
+javascript    javascriptreact
