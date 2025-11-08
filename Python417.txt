@@ -825,5 +825,19 @@ Counter.js
 Person.js
 Modal.js
 Modal.css
+Item.js
+Task.js
+Form.js
 
 https://thumbs.dreamstime.com/b/eiffel-tower-5-5013988.jpg
+
+components
+	quizzes
+		Quezzes.js
+		Quezzes.css
+	progress
+		ProgressBar.js
+		ProgressBar.css
+	result
+		Result.js
+		Result.css

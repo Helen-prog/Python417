@@ -57,7 +57,7 @@ function App() {
   return (
     <div className="main">
       {
-        step !== questions.length ?  <Quizzes 
+        step !== questions.length ? <Quizzes 
         question={question} 
         onClickVariant={onClickVariant}
         questions={questions}
