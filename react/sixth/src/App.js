@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useState } from 'react';
 import Home from './Home';
 import About from './About';
 import Articles from './Articles';
@@ -8,13 +9,19 @@ import NotFoundPage from './NotFoundPage';
 import './App.css';
 
 function App() {
+  let [registred, setRegistred] = useState(false);
+
   return (
     <div>
+      <div style={{textAlign: "center"}}>
+        <h3>Авторизирован: {registred ? "ДА" : "НЕТ"}</h3>
+        <button onClick={() => setRegistred({registred: true})}>Login</button>
+      </div>
 
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
+          <Route path="about" element={registred ? <About /> : <h2>Получить доступ к этой странице могут только зарегистрированные пользователи</h2>} />
           <Route path="about/:id" element={<AboutInfo />} />
           <Route path="articles" element={<Articles />} />
           <Route path="articles-us" element={<Navigate to="/articles" replace />} />

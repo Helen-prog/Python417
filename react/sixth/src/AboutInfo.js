@@ -1,10 +1,31 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-function AboutInfo(){
-    let {id} = useParams();
+function AboutInfo() {
+    let { id } = useParams();
+    let navigate = useNavigate();
+
+    let [post, setPost] = useState(null);
+
+    useEffect(() => {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+            .then(response => response.json())
+            .then(json => setPost(json))
+    }, []);
+
+    let goBack = () => navigate(-1);
+
     return (
-        <div>
-            {id}
+        <div className="content">
+            {
+                post && (
+                    <>
+                        <h1>{post.title}</h1>
+                        <p>{post.body}</p>
+                        <button onClick={goBack}>Назад</button>
+                    </>
+                )
+            }
         </div>
     )
 }

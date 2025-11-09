@@ -176,6 +176,9 @@ git clone https://github.com/Helen-prog/Python417.git
 git pull
 - забирает изменения с удаленного репозитория на локальный
 
+git log
+git revert 72bd09ce901f0d2598d62171d333b55268a50e65
+
 class NameClass:
 	свойства (переменные, поля)
 		- статические
@@ -841,3 +844,32 @@ components
 	result
 		Result.js
 		Result.css
+		
+npm install react-image-gallery
+
+components
+	users
+		Users.js
+		Users.css
+		User.js
+	success
+		Success.js
+		Success.css
+		
+		
+npm install react-router-dom
+
+Home.js
+About.js
+Articles.js
+AboutInfo.js
+NotFoundPage.js
+components
+	Layout.js
+	
+http://localhost:3000//about
+http://localhost:3000//articles
+
+
+
+		
